@@ -1,0 +1,4 @@
+name = "ManifoldExamples"
+uuid = "21be47e3-92bf-4199-8515-27870869dcc6"
+authors = ["Ronny Bergmann <git@ronnybergmann.net>"]
+version = "0.1.0"
