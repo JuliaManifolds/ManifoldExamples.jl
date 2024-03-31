@@ -25,8 +25,8 @@ jobs:
         env:
           cache-name: cache-quarto
         with:
-          path: tutorials/_freeze
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('tutorials/*.qmd') }}
+          path: examples/_freeze
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('examples/*.qmd') }}
           restore-keys: |
             ${{ runner.os }}-${{ env.cache-name }}-
       - name: Cache Documenter
@@ -35,8 +35,8 @@ jobs:
         env:
           cache-name: cache-documenter
         with:
-          path: docs/src/tutorials
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('tutorials/*.qmd') }}
+          path: docs/src/examples
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('exampleså/*.qmd') }}
           restore-keys: |
             ${{ runner.os }}-${{ env.cache-name }}-
       - name: Cache CondaPkg
