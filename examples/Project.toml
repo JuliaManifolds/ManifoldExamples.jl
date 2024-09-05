@@ -1,2 +1,3 @@
 [deps]
-ManifoldExamples = "21be47e3-92bf-4199-8515-27870869dcc6"
+ManifoldDiff = "af67fdf4-a580-4b9f-bbec-742ef357defd"
+Manifolds = "1cead3c2-87b3-11e9-0ccd-23c62b72b94e"
