@@ -8,7 +8,7 @@
 if Base.active_project() != joinpath(@__DIR__, "Project.toml")
     using Pkg
     Pkg.activate(@__DIR__)
-    Pkg.develop(PackageSpec(; path = (@__DIR__) * "/../"))
+    Pkg.develop(PackageSpec(; path=(@__DIR__) * "/../"))
     Pkg.resolve()
     Pkg.instantiate()
 end
@@ -21,7 +21,7 @@ if "--quarto" ∈ ARGS
         examples_folder = (@__DIR__) * "/../examples"
         # instantiate the tutorials environment if necessary
         Pkg.activate(examples_folder)
-        Pkg.develop(PackageSpec(; path = (@__DIR__) * "/../"))
+        Pkg.develop(PackageSpec(; path=(@__DIR__) * "/../"))
         Pkg.resolve()
         Pkg.instantiate()
         Pkg.activate(@__DIR__) # but return to the docs one before
@@ -55,20 +55,17 @@ open(joinpath(generated_path, "contributing.md"), "w") do io
     end
 end
 
-bib = CitationBibliography(joinpath(@__DIR__, "src", "references.bib"); style = :alpha)
+bib = CitationBibliography(joinpath(@__DIR__, "src", "references.bib"); style=:alpha)
 makedocs(;
-    format = HTML(;
-        mathengine = MathJax3(),
-        prettyurls = get(ENV, "CI", nothing) == "true",
-    ),
-    sitename = "ManifoldExamples.jl",
-    modules = [ManifoldExamples],
-    pages = [
+    format=HTML(; mathengine=MathJax3(), prettyurls=get(ENV, "CI", nothing) == "true"),
+    sitename="ManifoldExamples.jl",
+    modules=[ManifoldExamples],
+    pages=[
         "Home" => "index.md",
         "Examples" => ["Cubic Hermite interpolation" => "examples/hermite.md"],
         "Contributing to ManifoldExamples.jl" => "contributing.md",
         "References" => "src/references.md",
     ],
-    plugins = [bib],
+    plugins=[bib],
 )
-deploydocs(; repo = "github.com/JuliaManifolds/ManifoldExamples.jl", push_preview = true)
+deploydocs(; repo="github.com/JuliaManifolds/ManifoldExamples.jl", push_preview=true)
