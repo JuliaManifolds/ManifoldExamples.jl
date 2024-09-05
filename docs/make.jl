@@ -21,7 +21,7 @@ if "--quarto" ∈ ARGS
         examples_folder = (@__DIR__) * "/../examples"
         # instantiate the tutorials environment if necessary
         Pkg.activate(examples_folder)
-        Pkg.develop(PackageSpec(; path=(@__DIR__) * "/../"))
+        Pkg.develop(PackageSpec(; path = (@__DIR__) * "/../"))
         Pkg.resolve()
         Pkg.instantiate()
         Pkg.activate(@__DIR__) # but return to the docs one before
