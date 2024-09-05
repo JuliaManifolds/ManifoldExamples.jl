@@ -8,7 +8,7 @@
 if Base.active_project() != joinpath(@__DIR__, "Project.toml")
     using Pkg
     Pkg.activate(@__DIR__)
-    Pkg.develop(PackageSpec(; path=(@__DIR__) * "/../"))
+    Pkg.develop(PackageSpec(; path = (@__DIR__) * "/../"))
     Pkg.resolve()
     Pkg.instantiate()
 end
@@ -31,6 +31,8 @@ end
 
 # (c) load necessary packages for the docs
 using Documenter: DocMeta, HTML, MathJax3, deploydocs, makedocs
+using DocumenterCitations
+
 using ManifoldExamples
 
 generated_path = joinpath(@__DIR__, "src")
@@ -52,13 +54,20 @@ open(joinpath(generated_path, "contributing.md"), "w") do io
     end
 end
 
+bib = CitationBibliography(joinpath(@__DIR__, "src", "references.bib"); style = :alpha)
 makedocs(;
-    format=HTML(; mathengine=MathJax3(), prettyurls=get(ENV, "CI", nothing) == "true"),
-    sitename="ManifoldExamples.jl",
-    modules=[ManifoldExamples],
-    pages=[
+    format = HTML(;
+        mathengine = MathJax3(),
+        prettyurls = get(ENV, "CI", nothing) == "true",
+    ),
+    sitename = "ManifoldExamples.jl",
+    modules = [ManifoldExamples],
+    pages = [
         "Home" => "index.md",
+        "Examples" => ["Cubic Hermite interpolation" => "examples/hermite.md"],
         "Contributing to ManifoldExamples.jl" => "contributing.md",
+        "References" => "src/references.md",
     ],
+    plugins = [bib],
 )
-deploydocs(; repo="github.com/JuliaManifolds/ManifoldExamples.jl", push_preview=true)
+deploydocs(; repo = "github.com/JuliaManifolds/ManifoldExamples.jl", push_preview = true)
