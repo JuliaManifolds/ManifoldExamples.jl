@@ -1,3 +1,7 @@
 [deps]
+IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
 ManifoldDiff = "af67fdf4-a580-4b9f-bbec-742ef357defd"
 Manifolds = "1cead3c2-87b3-11e9-0ccd-23c62b72b94e"
+
+[compat]
+IJulia = "1"
