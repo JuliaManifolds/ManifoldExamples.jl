@@ -21,11 +21,12 @@ if "--quarto" ∈ ARGS
         examples_folder = (@__DIR__) * "/../examples"
         # instantiate the tutorials environment if necessary
         Pkg.activate(examples_folder)
+        Pkg.develop(PackageSpec(; path=(@__DIR__) * "/../"))
         Pkg.resolve()
         Pkg.instantiate()
-        Pkg.build("IJulia") # build IJulia to the right version.
         Pkg.activate(@__DIR__) # but return to the docs one before
         run(`quarto render $(examples_folder)`)
+        return nothing
     end
 end
 
