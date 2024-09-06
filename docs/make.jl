@@ -2,10 +2,6 @@
 #
 #
 
-#!/usr/bin/env julia
-#
-#
-
 if "--help" ∈ ARGS
     println(
         """
