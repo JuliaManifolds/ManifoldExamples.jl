@@ -68,23 +68,42 @@ Note that for, contrary to the Eulidean case, the order of points does matter fo
 
 ```{julia}
 
-M = Sphere(2)
-p = [0.8266841314682074, 0.3288540904434144, 0.45656142410117206]
-Xp = [0.15493539779687937, 0.5824002702016382, -0.7000314284584177]
-
-q = [0.0, 1.0, 0.0]
-Xq = [-2, 0.0, 5]
-
 scene = plot(M, [p, q]; wireframe_color=colorant"#CCCCCC", markersize=10, camera=(140.0, 10.0))
 plot!(scene, M, [p, q], [Xp, Xq]; wireframe = false, linewidth=1.5)
 
-interp_line = [manifold_hermite_interpolation(M, p, q, Xp, Xq, t) for t in 0.0:0.01:1.0]
 plot!(scene, M, interp_line; wireframe = false, linewidth=1.5)
 interp_line2 = [manifold_hermite_interpolation(M, q, p, -Xq, -Xp, t) for t in 0.0:0.01:1.0]
 plot!(scene, M, interp_line2; wireframe = false, linewidth=1.5)
 
 ```
 
+One possible way of making an interpolation method that is independent of the order of points in computing the average between these two interplations (see `manifold_hermite_interpolation_symmetric` below).
+
+
+```{julia}
+
+function manifold_hermite_interpolation_symmetric(
+    M::AbstractManifold,
+    p,
+    q,
+    Xp,
+    Xq,
+    t::Real,
+)
+    r_pq = manifold_hermite_interpolation(M, p, q, Xp, Xq, t)
+    r_qp = manifold_hermite_interpolation(M, q, p, -Xq, -Xp, 1-t)
+    return mid_point(M, r_pq, r_qp)
+end
+scene = plot(M, [p, q]; wireframe_color=colorant"#CCCCCC", markersize=10, camera=(140.0, 10.0))
+plot!(scene, M, [p, q], [Xp, Xq]; wireframe = false, linewidth=1.5)
+
+plot!(scene, M, interp_line; wireframe = false, linewidth=1.5)
+plot!(scene, M, interp_line2; wireframe = false, linewidth=1.5)
+
+interp_line3 = [manifold_hermite_interpolation_symmetric(M, q, p, -Xq, -Xp, t) for t in 0.0:0.01:1.0]
+plot!(scene, M, interp_line3; wireframe = false, linewidth=1.5)
+
+```
 
 ## Literature
 

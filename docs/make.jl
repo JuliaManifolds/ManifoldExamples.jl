@@ -94,7 +94,7 @@ makedocs(;
         "Home" => "index.md",
         [examples_menu]...,
         "Examples" => ["Cubic Hermite interpolation" => "examples/hermite.md"],
-        "Contributing to ManifoldExamples.jl" => "contributing.md",
+        "Contributing to ManifoldExamples.jl" => "src/contributing.md",
         "References" => "src/references.md",
     ],
     plugins=[bib],
