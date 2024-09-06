@@ -6,7 +6,7 @@ date: 05/09/2024
 
 ## Introduction
 
-This example shows how to perform cubic Hermite interpolation on Riemannian manifolds. The idea is described in [Zimmermann:2020](@ref).
+This example shows how to perform cubic Hermite interpolation on Riemannian manifolds. The idea is described in [Zimmermann:2020](@cite).
 
 First, let's import necessary libraries.
 
@@ -17,7 +17,7 @@ pythonplot()
 
 ```
 
-The main interpolation function directly follows Eq (2.5) from [Zimmermann:2020](@ref).
+The main interpolation function directly follows Eq (2.5) from [Zimmermann:2020](@cite).
 
 ```{julia}
 

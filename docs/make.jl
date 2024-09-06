@@ -79,7 +79,7 @@ open(joinpath(generated_path, "contributing.md"), "w") do io
     end
 end
 
-examples_menu = ["Examples" => ["Cubic Hermite interpolation" => "examples/hermite.md"]]
+examples_menu = "Examples" => ["Cubic Hermite interpolation" => "examples/hermite.md"]
 
 bib = CitationBibliography(joinpath(@__DIR__, "src", "references.bib"); style=:alpha)
 makedocs(;
@@ -88,10 +88,9 @@ makedocs(;
     modules=[ManifoldExamples],
     pages=[
         "Home" => "index.md",
-        [examples_menu]...,
-        "Examples" => ["Cubic Hermite interpolation" => "examples/hermite.md"],
-        "Contributing to ManifoldExamples.jl" => "src/contributing.md",
-        "References" => "src/references.md",
+        examples_menu,
+        "Contributing to ManifoldExamples.jl" => "contributing.md",
+        "References" => "references.md",
     ],
     plugins=[bib],
 )
