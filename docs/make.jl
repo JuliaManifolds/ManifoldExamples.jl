@@ -94,4 +94,8 @@ makedocs(;
     ],
     plugins=[bib],
 )
-deploydocs(; repo="github.com/JuliaManifolds/ManifoldExamples.jl", push_preview=true)
+deploydocs(;
+    repo="github.com/JuliaManifolds/ManifoldExamples.jl",
+    push_preview=true,
+    devbranch="main",
+)
