@@ -1,0 +1,5 @@
+[deps]
+jupyter = ""
+python = "3.11"
+matplotlib = ">=3.4"
+matplotlib-inline = ""

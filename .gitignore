@@ -1,2 +1,5 @@
 docs/Manifest.toml
 examples/Manifest.toml
+examples/.CondaPkg/
+examples/_freeze/
+docs/.CondaPkg
