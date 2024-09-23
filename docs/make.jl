@@ -61,7 +61,7 @@ using DocumenterCitations
 using ManifoldExamples
 
 generated_path = joinpath(@__DIR__, "src")
-base_url = "https://github.com/JuliaManifolds/ManifoldExamples.jl/blob/master/"
+base_url = "https://github.com/JuliaManifolds/ManifoldExamples.jl/blob/main/"
 isdir(generated_path) || mkdir(generated_path)
 open(joinpath(generated_path, "contributing.md"), "w") do io
     # Point to source license file
