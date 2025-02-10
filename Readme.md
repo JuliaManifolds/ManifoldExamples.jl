@@ -2,6 +2,8 @@
 
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 
+[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://juliamanifolds.github.io/ManifoldExamples.jl/dev/)
+
 This package is a work in progress repository to host examples working with [Manifolds.jl](https://juliamanifolds.github.io/Manifolds.jl/) and accompanying code, illustrating the use of [Manifolds.jl](https://juliamanifolds.github.io/Manifolds.jl/) in reproducible [Quarto](https://quarto.org) notebooks.
 
 Note that this package is not meant to introduce new manifolds themselves; these should be part of [Manifolds.jl](https://juliamanifolds.github.io/Manifolds.jl/) themselves, but focusses on applications where the manifolds are used numerically
